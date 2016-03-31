@@ -9,7 +9,7 @@ generateGitlabLoadPlatformJob.with {
 		scm {
 				git {
 						remote {
-								url('https://innersource.accenture.com/adop-b-framework-aem-core-gen5/adop-b-framework-gitlab-platform-management.git')
+								url('https://github.com/arcyteodoroacn/adop-b-framework-gitlab-platform-management.git')
 								credentials("adop-jenkins-master")
 						}	
 						branch('*/master')
