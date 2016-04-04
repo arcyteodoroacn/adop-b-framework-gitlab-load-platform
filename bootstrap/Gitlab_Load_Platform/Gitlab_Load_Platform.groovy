@@ -3,6 +3,7 @@ def generateGitlabLoadPlatformJob = freeStyleJob("Gitlab_Load_Platform")
  
 // Setup generateBuildPipelineJobs
 generateGitlabLoadPlatformJob.with {
+		authenticationToken('UKdjguOElrnS')
 		wrappers {
 			preBuildCleanup()
 		}
