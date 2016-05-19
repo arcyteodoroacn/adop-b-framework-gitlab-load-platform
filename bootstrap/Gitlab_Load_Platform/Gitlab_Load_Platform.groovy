@@ -4,13 +4,16 @@ def generateGitlabLoadPlatformJob = freeStyleJob("Gitlab_Load_Platform")
 // Setup generateBuildPipelineJobs
 generateGitlabLoadPlatformJob.with {
 		authenticationToken('UKdjguOElrnS')
+    parameters {
+     stringParam("GIT_URL","https://github.com/arcyteodoroacn/adop-b-framework-gitlab-platform-management.git","The git repo url for Platform Management")
+    }
 		wrappers {
 			preBuildCleanup()
 		}
 		scm {
 				git {
 						remote {
-								url('https://github.com/arcyteodoroacn/adop-b-framework-gitlab-platform-management.git')
+								url('$GIT_URL')
 								credentials("adop-jenkins-master")
 						}	
 						branch('*/master')
