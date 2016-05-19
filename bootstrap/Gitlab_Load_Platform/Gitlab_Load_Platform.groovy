@@ -23,16 +23,16 @@ PASSWORD_GITLAB=${PASSWORD_GITLAB:-gitlab1234}
 echo -e "Host gitlab\n\tStrictHostKeyChecking no\n" >> ~/.ssh/config
 echo -e "Host innersource.accenture.com\n\tStrictHostKeyChecking no\n" >> ~/.ssh/config
 						
-token="$(curl -X POST "http://gitlab:9080/api/v3/session?login=root&password=${PASSWORD_GITLAB}" | python -c "import json,sys;obj=json.load(sys.stdin);print obj['private_token'];")"
+token="$(curl -X POST "http://gitlab/gitlab/api/v3/session?login=root&password=${PASSWORD_GITLAB}" | python -c "import json,sys;obj=json.load(sys.stdin);print obj['private_token'];")"
 						
 key=$(cat ~/.ssh/id_rsa.pub)
 
-curl --header "PRIVATE-TOKEN: $token" -X POST "http://gitlab:9080/api/v3/user/keys" --data-urlencode "title=jenkins@adop-core" --data-urlencode "key=${key}"
+curl --header "PRIVATE-TOKEN: $token" -X POST "http://gitlab/gitlab/api/v3/user/keys" --data-urlencode "title=jenkins@adop-core" --data-urlencode "key=${key}"
 
 # create platform-management into gitlab
 target_repo_name="platform-management"
 
-curl --header "PRIVATE-TOKEN: $token" -X POST "http://gitlab:9080/api/v3/projects?name=${target_repo_name}"
+curl --header "PRIVATE-TOKEN: $token" -X POST "http://gitlab/gitlab/api/v3/projects?name=${target_repo_name}"
 
 # Create Gerrit repository
 # push the sample codes to the sample Gitlab project
