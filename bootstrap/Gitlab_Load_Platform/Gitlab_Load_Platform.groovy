@@ -21,6 +21,7 @@ generateGitlabLoadPlatformJob.with {
 		}
 		steps {
 				shell('''#!/bin/bash -ex
+LDAP_DOMAIN=${LDAP_DOMAIN:-ldap.adop.com}
 PASSWORD_GITLAB=${PASSWORD_GITLAB:-gitlab1234}
 				
 echo -e "Host gitlab\n\tStrictHostKeyChecking no\n" >> ~/.ssh/config
