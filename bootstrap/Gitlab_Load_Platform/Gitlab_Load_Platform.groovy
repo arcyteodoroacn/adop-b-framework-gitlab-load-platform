@@ -21,7 +21,7 @@ generateGitlabLoadPlatformJob.with {
 PASSWORD_GITLAB=${PASSWORD_GITLAB:-gitlab1234}
 				
 echo -e "Host gitlab\n\tStrictHostKeyChecking no\n" >> ~/.ssh/config
-echo -e "Host innersource.accenture.com\n\tStrictHostKeyChecking no\n" >> ~/.ssh/config
+echo -e "Host newsource.accenture.com\n\tStrictHostKeyChecking no\n" >> ~/.ssh/config
 						
 token="$(curl -X POST "http://gitlab:9080/api/v3/session?login=root&password=${PASSWORD_GITLAB}" | python -c "import json,sys;obj=json.load(sys.stdin);print obj['private_token'];")"
 						
